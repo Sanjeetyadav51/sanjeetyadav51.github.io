@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sanjeet Yadav — Java Backend Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#FFFFFF;
+  --surface:#F8FAFC;
+  --border:#E2E8F0;
+  --text:#0F172A;
+  --muted:#64748B;
+  --blue:#1D4ED8;
+  --blue-light:#EFF6FF;
+  --purple:#7C3AED;
+  --purple-light:#F5F3FF;
+  --green:#059669;
+  --green-light:#ECFDF5;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:60px;}
+.nav-logo{font-weight:700;font-size:1rem;color:var(--text);letter-spacing:-0.02em;}
+.nav-logo span{color:var(--blue);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.85rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--blue);}
+
+/* HERO */
+.hero{max-width:1100px;margin:0 auto;padding:80px 5% 70px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--blue-light);color:var(--blue);font-size:0.75rem;font-weight:600;padding:5px 12px;border-radius:99px;margin-bottom:20px;letter-spacing:0.04em;text-transform:uppercase;}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+h1{font-size:2.8rem;font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:16px;}
+h1 .highlight{color:var(--blue);}
+.hero-sub{font-size:1rem;color:var(--muted);margin-bottom:28px;max-width:440px;line-height:1.7;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{background:var(--blue);color:#fff;padding:11px 24px;border-radius:8px;font-size:0.875rem;font-weight:600;text-decoration:none;transition:background 0.2s;}
+.btn-primary:hover{background:#1e40af;}
+.btn-ghost{background:transparent;color:var(--text);padding:11px 24px;border-radius:8px;font-size:0.875rem;font-weight:600;text-decoration:none;border:1.5px solid var(--border);transition:border-color 0.2s;}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);}
+.hero-stats{display:flex;gap:28px;margin-top:36px;}
+.stat{text-align:left;}
+.stat-num{font-size:1.6rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;}
+.stat-label{font-size:0.75rem;color:var(--muted);font-weight:500;}
+
+/* CODE CARD */
+.code-card{background:var(--text);border-radius:16px;padding:24px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.8;box-shadow:0 20px 60px rgba(15,23,42,0.15);}
+.code-bar{display:flex;gap:6px;margin-bottom:20px;}
+.dot{width:10px;height:10px;border-radius:50%;}
+.dot.red{background:#FF5F57;}
+.dot.yellow{background:#FEBC2E;}
+.dot.green{background:#28C840;}
+.c-gray{color:#64748B;}
+.c-blue{color:#60A5FA;}
+.c-green{color:#34D399;}
+.c-yellow{color:#FCD34D;}
+.c-white{color:#F1F5F9;}
+.c-purple{color:#C084FC;}
+
+/* SECTION COMMONS */
+section{padding:70px 5%;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-label{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.section-title{font-size:1.9rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:40px;}
+.divider{height:1px;background:var(--border);max-width:1100px;margin:0 auto;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:16px;}
+.about-text p strong{color:var(--text);}
+.about-cards{display:flex;flex-direction:column;gap:12px;}
+.about-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px;}
+.about-card-icon{font-size:1.4rem;}
+.about-card-title{font-size:0.875rem;font-weight:600;}
+.about-card-sub{font-size:0.8rem;color:var(--muted);}
+
+/* SKILLS */
+.skills-bg{background:var(--surface);}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.skill-group{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px;}
+.skill-group-title{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.skill-group-title.blue{color:var(--blue);}
+.skill-group-title.purple{color:var(--purple);}
+.skill-group-title.green{color:var(--green);}
+.skill-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.tag{font-size:0.78rem;font-weight:500;padding:4px 10px;border-radius:6px;}
+.tag.blue{background:var(--blue-light);color:var(--blue);}
+.tag.purple{background:var(--purple-light);color:var(--purple);}
+.tag.green{background:var(--green-light);color:var(--green);}
+
+/* EDUCATION */
+.edu-timeline{display:flex;flex-direction:column;gap:0;}
+.edu-item{display:grid;grid-template-columns:160px 1fr;gap:32px;padding:28px 0;border-bottom:1px solid var(--border);}
+.edu-item:last-child{border-bottom:none;}
+.edu-year{font-size:0.8rem;font-weight:600;color:var(--muted);padding-top:3px;}
+.edu-degree{font-size:1rem;font-weight:700;margin-bottom:4px;}
+.edu-school{font-size:0.875rem;color:var(--muted);margin-bottom:8px;}
+.edu-badge{display:inline-block;font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:6px;background:var(--blue-light);color:var(--blue);}
+
+/* CERTIFICATIONS */
+.cert-bg{background:var(--surface);}
+.cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.cert-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px 22px;display:flex;align-items:center;gap:16px;transition:box-shadow 0.2s,border-color 0.2s;}
+.cert-card:hover{box-shadow:0 4px 20px rgba(29,78,216,0.08);border-color:#BFDBFE;}
+.cert-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.cert-icon.orange{background:#FFF7ED;}
+.cert-icon.yellow{background:#FEFCE8;}
+.cert-icon.blue{background:var(--blue-light);}
+.cert-icon.purple{background:var(--purple-light);}
+.cert-name{font-size:0.875rem;font-weight:700;margin-bottom:2px;}
+.cert-issuer{font-size:0.78rem;color:var(--muted);}
+
+/* CONTACT */
+.contact-box{background:linear-gradient(135deg,#1D4ED8 0%,#7C3AED 100%);border-radius:20px;padding:50px;text-align:center;color:#fff;}
+.contact-box h2{font-size:2rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:12px;}
+.contact-box p{opacity:0.85;margin-bottom:28px;font-size:0.95rem;}
+.contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+.contact-link{background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);color:#fff;padding:10px 22px;border-radius:8px;text-decoration:none;font-size:0.875rem;font-weight:600;transition:background 0.2s;}
+.contact-link:hover{background:rgba(255,255,255,0.25);}
+
+/* FOOTER */
+footer{text-align:center;padding:28px;font-size:0.8rem;color:var(--muted);border-top:1px solid var(--border);}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;}
+  .code-card{display:none;}
+  h1{font-size:2rem;}
+  .about-grid,.skills-grid,.cert-grid{grid-template-columns:1fr;}
+  .edu-item{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Sanjeet<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-tag">Open to Internships &amp; Placements</div>
+    <h1>Sanjeet<br/><span class="highlight">Yadav</span></h1>
+    <p class="hero-sub">Java Backend Developer &amp; GenAI Enthusiast. Building production-grade REST APIs with Spring Boot and integrating LLM-powered features into real applications.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="https://github.com/Sanjeetyadav51" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">LeetCode Problems</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Certifications</div></div>
+      <div class="stat"><div class="stat-num">3rd</div><div class="stat-label">Year @ PSIT</div></div>
+    </div>
+  </div>
+  <div class="code-card">
+    <div class="code-bar"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+    <div><span class="c-purple">@RestController</span></div>
+    <div><span class="c-purple">@RequestMapping</span><span class="c-white">(</span><span class="c-yellow">"/api"</span><span class="c-white">)</span></div>
+    <div><span class="c-blue">public class</span> <span class="c-green">SanjeetYadav</span> <span class="c-white">{</span></div>
+    <div>&nbsp;</div>
+    <div>&nbsp;&nbsp;<span class="c-blue">private final</span> <span class="c-green">String</span> role =</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-yellow">"Java Backend Developer"</span><span class="c-white">;</span></div>
+    <div>&nbsp;</div>
+    <div>&nbsp;&nbsp;<span class="c-purple">@GetMapping</span><span class="c-white">(</span><span class="c-yellow">"/skills"</span><span class="c-white">)</span></div>
+    <div>&nbsp;&nbsp;<span class="c-blue">public</span> <span class="c-green">List</span><span class="c-white">&lt;</span><span class="c-green">String</span><span class="c-white">&gt;</span> <span class="c-blue">getSkills</span><span class="c-white">() {</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-blue">return</span> <span class="c-green">List</span><span class="c-white">.</span><span class="c-blue">of</span><span class="c-white">(</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-yellow">"Spring Boot"</span><span class="c-white">,</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-yellow">"Spring AI"</span><span class="c-white">,</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-yellow">"LangChain"</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-white">);</span></div>
+    <div>&nbsp;&nbsp;<span class="c-white">}</span></div>
+    <div><span class="c-white">}</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About Me</div>
+    <div class="section-title">Who I am</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <strong>3rd year B.Tech CSE (AI) student at PSIT, Kanpur</strong>, passionate about building scalable Java backends and integrating cutting-edge AI into real-world applications.</p>
+        <p>My core strength is <strong>Java backend development</strong> — I build clean REST APIs using Spring Boot, apply proper layered architecture, and write JUnit tests for production-quality code.</p>
+        <p>On the AI side, I've built projects using <strong>Spring AI, LangChain, Groq, and ChromaDB</strong> — combining my backend expertise with the GenAI ecosystem that companies are actively hiring for.</p>
+        <p>I've solved <strong>500+ LeetCode problems in C++</strong> and am actively preparing for campus placements, targeting GCC and AI-focused backend roles.</p>
+      </div>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="about-card-icon">🎓</div>
+          <div>
+            <div class="about-card-title">B.Tech CSE (AI) — PSIT Kanpur</div>
+            <div class="about-card-sub">3rd Year · AKTU · 2022–2026</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">💻</div>
+          <div>
+            <div class="about-card-title">Java Backend Developer</div>
+            <div class="about-card-sub">Spring Boot · REST APIs · JPA/Hibernate</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🤖</div>
+          <div>
+            <div class="about-card-title">GenAI Enthusiast</div>
+            <div class="about-card-sub">Spring AI · LangChain · Groq · ChromaDB</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">⚡</div>
+          <div>
+            <div class="about-card-title">Competitive Programmer</div>
+            <div class="about-card-sub">500+ LeetCode · C++ · DSA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-bg">
+  <div class="section-inner">
+    <div class="section-label">Technical Skills</div>
+    <div class="section-title">What I work with</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title blue">☕ Languages</div>
+        <div class="skill-tags">
+          <span class="tag blue">Java</span>
+          <span class="tag blue">C++</span>
+          <span class="tag blue">Python</span>
+          <span class="tag blue">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title blue">🔧 Backend &amp; Frameworks</div>
+        <div class="skill-tags">
+          <span class="tag blue">Spring Boot</span>
+          <span class="tag blue">Spring AI</span>
+          <span class="tag blue">REST APIs</span>
+          <span class="tag blue">JPA/Hibernate</span>
+          <span class="tag blue">JWT Auth</span>
+          <span class="tag blue">Maven</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title purple">🤖 AI / GenAI Stack</div>
+        <div class="skill-tags">
+          <span class="tag purple">LangChain</span>
+          <span class="tag purple">Groq</span>
+          <span class="tag purple">ChromaDB</span>
+          <span class="tag purple">Gemini API</span>
+          <span class="tag purple">OpenAI API</span>
+          <span class="tag purple">RAG</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title green">🗄️ Databases</div>
+        <div class="skill-tags">
+          <span class="tag green">MySQL</span>
+          <span class="tag green">PostgreSQL</span>
+          <span class="tag green">Redis</span>
+          <span class="tag green">ChromaDB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title green">☁️ Cloud &amp; DevOps</div>
+        <div class="skill-tags">
+          <span class="tag green">AWS</span>
+          <span class="tag green">Git</span>
+          <span class="tag green">GitHub</span>
+          <span class="tag green">Docker</span>
+          <span class="tag green">Linux</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title blue">🧪 Testing &amp; Tools</div>
+        <div class="skill-tags">
+          <span class="tag blue">JUnit</span>
+          <span class="tag blue">Postman</span>
+          <span class="tag blue">IntelliJ</span>
+          <span class="tag blue">Eclipse</span>
+          <span class="tag blue">VS Code</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-label">Education</div>
+    <div class="section-title">Academic background</div>
+    <div class="edu-timeline">
+      <div class="edu-item">
+        <div class="edu-year">2022 — 2026</div>
+        <div>
+          <div class="edu-degree">B.Tech — Computer Science &amp; Engineering (AI)</div>
+          <div class="edu-school">Pranveer Singh Institute of Technology (PSIT), Kanpur · AKTU</div>
+          <span class="edu-badge">Currently in 3rd Year</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2021</div>
+        <div>
+          <div class="edu-degree">Class 10 — CBSE Secondary School Examination</div>
+          <div class="edu-school">Little Flower School, Attawa Harraiya, Basti, UP</div>
+          <span class="edu-badge">Result: Pass</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="cert-bg">
+  <div class="section-inner">
+    <div class="section-label">Certifications</div>
+    <div class="section-title">Credentials earned</div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon orange">☕</div>
+        <div>
+          <div class="cert-name">Java SE Certification</div>
+          <div class="cert-issuer">Oracle</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon yellow">☁️</div>
+        <div>
+          <div class="cert-name">AWS Cloud Practitioner</div>
+          <div class="cert-issuer">Amazon Web Services</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon purple">🤖</div>
+        <div>
+          <div class="cert-name">AI Certification</div>
+          <div class="cert-issuer">TATA</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon blue">🌱</div>
+        <div>
+          <div class="cert-name">Spring Boot Development</div>
+          <div class="cert-issuer">Infosys Springboard</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-box">
+      <h2>Let's connect</h2>
+      <p>Looking for internship and placement opportunities in Java backend and AI-focused roles. Open to work from Kanpur or remote.</p>
+      <div class="contact-links">
+        <a href="https://github.com/Sanjeetyadav51" target="_blank" class="contact-link">GitHub ↗</a>
+        <a href="mailto:sanjeet@email.com" class="contact-link">Email ↗</a>
+        <a href="https://linkedin.com/in/sanjeetyadav" target="_blank" class="contact-link">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built by Sanjeet Yadav · Java Backend Developer &amp; GenAI Enthusiast · PSIT Kanpur
+</footer>
+
+</body>
+</html>
